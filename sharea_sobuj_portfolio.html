@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHAREA SOBUJ | Personal Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        // Tailwind Dark Mode & Custom Font Configuration
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        },
+                        accent: {
+                            500: '#10b981',
+                            600: '#059669',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 font-sans antialiased selection:bg-primary-500 selection:text-white">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/70 dark:border-slate-800/70 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Logo / Brand Name -->
+                <a href="#home" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-600 to-accent-500 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-primary-500/30 group-hover:scale-105 transition-transform">
+                        S
+                    </div>
+                    <span class="font-extrabold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300">
+                        SHAREA SOBUJ
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-300 dark:hover:text-primary-400 transition-colors">Home</a>
+                    <a href="#about" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-300 dark:hover:text-primary-400 transition-colors">About</a>
+                    <a href="#skills" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-300 dark:hover:text-primary-400 transition-colors">Skills</a>
+                    <a href="#projects" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-300 dark:hover:text-primary-400 transition-colors">Projects</a>
+                    <a href="#contact" class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-300 dark:hover:text-primary-400 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Right Actions: Theme Toggle & Mobile Menu Button -->
+                <div class="flex items-center gap-3">
+                    <!-- Dark/Light Theme Toggle -->
+                    <button id="theme-toggle" aria-label="Toggle Dark Mode" class="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+                    </button>
+
+                    <!-- Hire Me CTA (Desktop) -->
+                    <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 shadow-md shadow-primary-500/25 transition-all hover:-translate-y-0.5">
+                        Hire Me
+                    </a>
+
+                    <!-- Mobile Menu Hamburger Button -->
+                    <button id="mobile-menu-btn" aria-label="Open Menu" class="md:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none">
+                        <i id="menu-icon" class="fas fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-6 space-y-2 shadow-xl">
+            <a href="#home" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-primary-50 dark:hover:bg-slate-800 hover:text-primary-600">Home</a>
+            <a href="#about" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-primary-50 dark:hover:bg-slate-800 hover:text-primary-600">About</a>
+            <a href="#skills" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-primary-50 dark:hover:bg-slate-800 hover:text-primary-600">Skills</a>
+            <a href="#projects" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-primary-50 dark:hover:bg-slate-800 hover:text-primary-600">Projects</a>
+            <a href="#contact" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-primary-50 dark:hover:bg-slate-800 hover:text-primary-600">Contact</a>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section id="home" class="pt-28 pb-20 sm:pt-36 sm:pb-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <!-- Decorative Background Blobs -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-accent-500/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Hero Text Content -->
+            <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-500/10 border border-primary-200/60 dark:border-primary-500/20 text-primary-700 dark:text-primary-300 text-sm font-semibold">
+                    <span class="w-2.5 h-2.5 rounded-full bg-accent-500 animate-pulse"></span>
+                    Welcome to My Digital Portfolio
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                    Hello, I'm <br class="hidden sm:block">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-indigo-500 to-accent-500">
+                        SHAREA SOBUJ
+                    </span>
+                </h1>
+
+                <!-- Dynamic Typing Text -->
+                <div class="text-xl sm:text-2xl font-semibold text-slate-600 dark:text-slate-300 h-8 flex items-center justify-center lg:justify-start">
+                    <span>I am a&nbsp;</span>
+                    <span id="typing-text" class="text-primary-600 dark:text-primary-400 border-r-2 border-primary-600 pr-1"></span>
+                </div>
+
+                <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    I love building modern, visually appealing, and mobile-friendly web applications. I am always ready to bring your digital projects and business ideas to life.
+                </p>
+
+                <!-- Quick Contact Info Pills -->
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1">
+                    <a href="tel:01310289829" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm font-medium shadow-sm hover:border-primary-500 transition-colors">
+                        <i class="fas fa-phone-alt text-accent-500"></i>
+                        <span>01310289829</span>
+                    </a>
+                    <a href="mailto:shareasobuj9829@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm font-medium shadow-sm hover:border-primary-500 transition-colors">
+                        <i class="fas fa-envelope text-primary-500"></i>
+                        <span>shareasobuj9829@gmail.com</span>
+                    </a>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#projects" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-primary-600 to-indigo-600 hover:from-primary-700 hover:to-indigo-700 shadow-lg shadow-primary-500/30 transition-all hover:-translate-y-0.5 text-center">
+                        View My Work <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-center">
+                        Send a Message
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Profile Card / Visual -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative w-72 h-72 sm:w-96 sm:h-96">
+                    <!-- Animated Gradient Ring -->
+                    <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary-600 via-indigo-500 to-accent-500 rotate-6 opacity-80 blur-sm"></div>
+                    <div class="relative w-full h-full rounded-3xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 overflow-hidden shadow-2xl flex flex-col items-center justify-center p-6 text-center">
+                        <img 
+                            src="https://placehold.co/400x400/4f46e5/ffffff?text=SHAREA+SOBUJ" 
+                            alt="SHAREA SOBUJ Profile" 
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/ffffff?text=SS';"
+                            class="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl object-cover shadow-lg mb-4 border-4 border-primary-500/20"
+                        >
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">SHAREA SOBUJ</h3>
+                        <p class="text-sm text-primary-600 dark:text-primary-400 font-medium mt-1">Web Designer & Developer</p>
+                        
+                        <!-- Social Links -->
+                        <div class="flex items-center gap-3 mt-5">
+                            <a href="https://github.com/shareasobuj?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-900 dark:hover:bg-white dark:hover:text-slate-900 hover:text-white flex items-center justify-center transition-colors">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                            <a href="tel:01310289829" aria-label="Call" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-accent-500 hover:text-white flex items-center justify-center transition-colors">
+                                <i class="fas fa-phone"></i>
+                            </a>
+                            <a href="mailto:shareasobuj9829@gmail.com" aria-label="Email" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-primary-600 hover:text-white flex items-center justify-center transition-colors">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://wa.me/8801310289829" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white flex items-center justify-center transition-colors">
+                                <i class="fab fa-whatsapp text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ABOUT SECTION ================= -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900/50 border-y border-slate-200/60 dark:border-slate-800/60">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-sm font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">Introduction</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">About Me</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-primary-600 to-accent-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
+                        Combining Creative Web Solutions with Modern Design
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        I am <strong>SHAREA SOBUJ</strong>. I have a deep passion for technology and web development. I believe a great website is not only visually attractive, but also performs fast and flawlessly across all devices (mobile, tablet, and desktop).
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        By understanding client requirements, I deliver every project with custom designs, responsive layouts, and dynamic interactive features.
+                    </p>
+
+                    <!-- Personal Details Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700/70">
+                            <span class="text-xs text-slate-500 dark:text-slate-400 block">Full Name</span>
+                            <span class="font-bold text-slate-900 dark:text-white">SHAREA SOBUJ</span>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700/70">
+                            <span class="text-xs text-slate-500 dark:text-slate-400 block">Phone Number</span>
+                            <span class="font-bold text-slate-900 dark:text-white">01310289829</span>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700/70 sm:col-span-2">
+                            <span class="text-xs text-slate-500 dark:text-slate-400 block">Email Address</span>
+                            <span class="font-bold text-slate-900 dark:text-white break-all">shareasobuj9829@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats / Highlights Cards -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="p-6 rounded-3xl bg-gradient-to-br from-primary-600 to-indigo-700 text-white shadow-xl">
+                        <i class="fas fa-laptop-code text-3xl mb-4 opacity-90"></i>
+                        <h4 class="text-3xl sm:text-4xl font-extrabold">100%</h4>
+                        <p class="text-sm text-primary-100 mt-1">Mobile Responsive Design</p>
+                    </div>
+                    <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg">
+                        <i class="fas fa-bolt text-3xl text-amber-500 mb-4"></i>
+                        <h4 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Fast</h4>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Optimized & Clean Code</p>
+                    </div>
+                    <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg">
+                        <i class="fas fa-palette text-3xl text-accent-500 mb-4"></i>
+                        <h4 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Smart</h4>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Modern User Interface</p>
+                    </div>
+                    <div class="p-6 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-xl">
+                        <i class="fas fa-headset text-3xl mb-4 opacity-90"></i>
+                        <h4 class="text-3xl sm:text-4xl font-extrabold">24/7</h4>
+                        <p class="text-sm text-emerald-100 mt-1">Support & Communication</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SKILLS SECTION ================= -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-sm font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">Expertise</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">My Technical Skills</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-primary-600 to-accent-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skill Card 1 -->
+                <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-orange-500/10 text-orange-600 flex items-center justify-center text-2xl">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <h3 class="font-bold text-lg">HTML5 & Semantic Web</h3>
+                        </div>
+                        <span class="font-bold text-primary-600">95%</span>
+                    </div>
+                    <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2.5">
+                        <div class="bg-gradient-to-r from-orange-500 to-red-500 h-2.5 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 2 -->
+                <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-600 flex items-center justify-center text-2xl">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <h3 class="font-bold text-lg">CSS3 & Tailwind CSS</h3>
+                        </div>
+                        <span class="font-bold text-primary-600">90%</span>
+                    </div>
+                    <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2.5">
+                        <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-2.5 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-yellow-500/10 text-yellow-600 flex items-center justify-center text-2xl">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <h3 class="font-bold text-lg">JavaScript (ES6+)</h3>
+                        </div>
+                        <span class="font-bold text-primary-600">85%</span>
+                    </div>
+                    <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2.5">
+                        <div class="bg-gradient-to-r from-yellow-400 to-amber-500 h-2.5 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 4 -->
+                <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center text-2xl">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3 class="font-bold text-lg">Responsive Design</h3>
+                        </div>
+                        <span class="font-bold text-primary-600">95%</span>
+                    </div>
+                    <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2.5">
+                        <div class="bg-gradient-to-r from-emerald-500 to-teal-500 h-2.5 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 5 -->
+                <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-600 flex items-center justify-center text-2xl">
+                                <i class="fas fa-bezier-curve"></i>
+                            </div>
+                            <h3 class="font-bold text-lg">UI/UX Prototyping</h3>
+                        </div>
+                        <span class="font-bold text-primary-600">80%</span>
+                    </div>
+                    <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2.5">
+                        <div class="bg-gradient-to-r from-purple-500 to-indigo-500 h-2.5 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 6 -->
+                <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-pink-500/10 text-pink-600 flex items-center justify-center text-2xl">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3 class="font-bold text-lg">Web Optimization</h3>
+                        </div>
+                        <span class="font-bold text-primary-600">88%</span>
+                    </div>
+                    <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2.5">
+                        <div class="bg-gradient-to-r from-pink-500 to-rose-500 h-2.5 rounded-full" style="width: 88%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PROJECTS SECTION (DYNAMIC FILTER) ================= -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900/50 border-y border-slate-200/60 dark:border-slate-800/60">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-sm font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">Portfolio</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">Recent Projects</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-primary-600 to-accent-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Dynamic Filter Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+                <button data-filter="all" class="filter-btn active px-5 py-2.5 rounded-xl text-sm font-semibold bg-primary-600 text-white shadow-md transition-all">
+                    All Projects
+                </button>
+                <button data-filter="web" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-primary-100 dark:hover:bg-slate-700 transition-all">
+                    Web Design
+                </button>
+                <button data-filter="app" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-primary-100 dark:hover:bg-slate-700 transition-all">
+                    Web Apps
+                </button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card group rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300" data-category="web">
+                    <div class="relative overflow-hidden h-52">
+                        <img 
+                            src="https://placehold.co/600x400/4f46e5/ffffff?text=E-Commerce+Website" 
+                            alt="E-Commerce Project" 
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x400/334155/ffffff?text=Project+1';"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        >
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-lg bg-primary-600 text-white text-xs font-bold">Web Design</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold group-hover:text-primary-600 transition-colors">Modern E-Commerce Website</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">
+                            A mobile-friendly and fast online shopping platform featuring a smart shopping cart and dynamic product filtering.
+                        </p>
+                        <div class="pt-3 flex items-center justify-between border-t border-slate-200 dark:border-slate-800">
+                            <span class="text-xs font-semibold text-slate-500">HTML • Tailwind • JS</span>
+                            <a href="#contact" class="text-sm font-bold text-primary-600 hover:underline">Details <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card group rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300" data-category="app">
+                    <div class="relative overflow-hidden h-52">
+                        <img 
+                            src="https://placehold.co/600x400/10b981/ffffff?text=Business+Dashboard" 
+                            alt="Business Dashboard" 
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x400/334155/ffffff?text=Project+2';"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        >
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-lg bg-accent-600 text-white text-xs font-bold">Web App</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold group-hover:text-primary-600 transition-colors">Business Management Dashboard</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">
+                            A dynamic web application designed for tracking daily accounting, sales analytics, and customer management.
+                        </p>
+                        <div class="pt-3 flex items-center justify-between border-t border-slate-200 dark:border-slate-800">
+                            <span class="text-xs font-semibold text-slate-500">JavaScript • Responsive UI</span>
+                            <a href="#contact" class="text-sm font-bold text-primary-600 hover:underline">Details <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card group rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300" data-category="web">
+                    <div class="relative overflow-hidden h-52">
+                        <img 
+                            src="https://placehold.co/600x400/0ea5e9/ffffff?text=Corporate+Agency" 
+                            alt="Corporate Agency" 
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x400/334155/ffffff?text=Project+3';"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        >
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-lg bg-primary-600 text-white text-xs font-bold">Web Design</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold group-hover:text-primary-600 transition-colors">Corporate & Agency Landing Page</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">
+                            A professional and SEO-friendly corporate website tailored for businesses, agencies, and service providers.
+                        </p>
+                        <div class="pt-3 flex items-center justify-between border-t border-slate-200 dark:border-slate-800">
+                            <span class="text-xs font-semibold text-slate-500">HTML5 • CSS3 • Animation</span>
+                            <a href="#contact" class="text-sm font-bold text-primary-600 hover:underline">Details <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View More on GitHub Button -->
+            <div class="text-center mt-12">
+                <a href="https://github.com/shareasobuj?tab=repositories" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-700 shadow-lg transition-all hover:-translate-y-0.5">
+                    <i class="fab fa-github text-xl"></i>
+                    <span>Explore All Repositories on GitHub</span>
+                    <i class="fas fa-external-link-alt text-xs opacity-75"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CONTACT SECTION ================= -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-sm font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">Contact</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">Get In Touch</h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-3">
+                    Have a project in mind or want to collaborate? Reach out directly via phone, email, or send a message using the form below.
+                </p>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-primary-600 to-accent-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                <!-- Contact Info Cards (Left 5 Cols) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <!-- Phone Card -->
+                    <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-accent-500/10 text-accent-600 flex items-center justify-center text-xl shrink-0">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-lg">Phone Number</h4>
+                            <p class="text-slate-600 dark:text-slate-300 font-medium mt-1">01310289829</p>
+                            <div class="flex items-center gap-3 mt-3">
+                                <a href="tel:01310289829" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-accent-600 text-white hover:bg-accent-700 transition-colors">
+                                    Call Now
+                                </a>
+                                <button onclick="copyToClipboard('01310289829', 'Phone number copied to clipboard!')" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email Card -->
+                    <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-primary-500/10 text-primary-600 flex items-center justify-center text-xl shrink-0">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-bold text-lg">Email Address</h4>
+                            <p class="text-slate-600 dark:text-slate-300 font-medium mt-1 break-all">shareasobuj9829@gmail.com</p>
+                            <div class="flex items-center gap-3 mt-3">
+                                <a href="mailto:shareasobuj9829@gmail.com" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-primary-600 text-white hover:bg-primary-700 transition-colors">
+                                    Send Email
+                                </a>
+                                <button onclick="copyToClipboard('shareasobuj9829@gmail.com', 'Email address copied to clipboard!')" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                                    <i class="far fa-copy mr-1"></i> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp Direct Card -->
+                    <div class="p-6 rounded-3xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg">Chat on WhatsApp</h4>
+                            <p class="text-sm text-emerald-100 mt-1">Message directly for a quick response</p>
+                        </div>
+                        <a href="https://wa.me/8801310289829" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-2xl bg-white text-emerald-600 flex items-center justify-center text-2xl shadow-md hover:scale-105 transition-transform">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Dynamic Contact Form (Right 7 Cols) -->
+                <div class="lg:col-span-7">
+                    <form id="contact-form" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="sender-name" class="block text-sm font-semibold mb-2">Your Name *</label>
+                                <input type="text" id="sender-name" required placeholder="Enter your full name" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all">
+                            </div>
+                            <div>
+                                <label for="sender-phone" class="block text-sm font-semibold mb-2">Phone or Email *</label>
+                                <input type="text" id="sender-phone" required placeholder="Enter your phone or email" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="sender-subject" class="block text-sm font-semibold mb-2">Subject</label>
+                            <input type="text" id="sender-subject" placeholder="Project or inquiry subject" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all">
+                        </div>
+
+                        <div>
+                            <label for="sender-message" class="block text-sm font-semibold mb-2">Your Message *</label>
+                            <textarea id="sender-message" rows="4" required placeholder="Write your message details here..." class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-primary-600 to-indigo-600 hover:from-primary-700 hover:to-indigo-700 shadow-lg shadow-primary-500/30 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-slate-900 text-slate-300 py-12 px-4 sm:px-6 lg:px-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left">
+                <span class="text-2xl font-extrabold text-white tracking-tight">SHAREA SOBUJ</span>
+                <p class="text-sm text-slate-400 mt-1">Phone: 01310289829 | Email: shareasobuj9829@gmail.com</p>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="#home" class="text-sm hover:text-white transition-colors">Home</a>
+                <a href="#about" class="text-sm hover:text-white transition-colors">About</a>
+                <a href="#projects" class="text-sm hover:text-white transition-colors">Projects</a>
+                <a href="#contact" class="text-sm hover:text-white transition-colors">Contact</a>
+                <a href="https://github.com/shareasobuj?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-lg hover:text-white transition-colors ml-1">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+
+            <p class="text-sm text-slate-500">
+                &copy; <span id="current-year"></span> SHAREA SOBUJ. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ================= CUSTOM TOAST NOTIFICATION (NO ALERT) ================= -->
+    <div id="toast-box" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-700 dark:border-slate-200">
+            <i class="fas fa-check-circle text-accent-500 text-xl"></i>
+            <span id="toast-message" class="font-semibold text-sm">Action completed successfully!</span>
+        </div>
+    </div>
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+        // 1. Set Current Year in Footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 2. Dark / Light Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
+
+        // Check saved theme or system preference
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+
+        // 3. Mobile Navigation Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.replace('fa-times', 'fa-bars');
+            } else {
+                menuIcon.classList.replace('fa-bars', 'fa-times');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.replace('fa-times', 'fa-bars');
+            });
+        });
+
+        // 4. Dynamic Typing Effect in Hero Section
+        const roles = [
+            "Web Designer",
+            "Frontend Developer",
+            "Freelancer",
+            "Creative Problem Solver"
+        ];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typing-text');
+
+        function typeEffect() {
+            const currentRole = roles[roleIndex];
+            if (isDeleting) {
+                typingElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let speed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                speed = 1800; // Pause at full word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                speed = 400;
+            }
+
+            setTimeout(typeEffect, speed);
+        }
+        window.addEventListener('DOMContentLoaded', typeEffect);
+
+        // 5. Dynamic Project Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Reset active styling
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-primary-600', 'text-white', 'shadow-md');
+                    b.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                });
+                // Set clicked button active
+                btn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                btn.classList.add('bg-primary-600', 'text-white', 'shadow-md');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 6. Custom Toast Notification Function
+        let toastTimeout;
+        function showToast(message) {
+            const toastBox = document.getElementById('toast-box');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = message;
+            toastBox.classList.remove('translate-y-24', 'opacity-0');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toastBox.classList.add('translate-y-24', 'opacity-0');
+            }, 3200);
+        }
+
+        // 7. Copy Text Utility (for Phone & Email)
+        function copyToClipboard(text, successMsg) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            tempInput.style.position = 'fixed';
+            tempInput.style.opacity = '0';
+            document.body.appendChild(tempInput);
+            tempInput.focus();
+            tempInput.select();
+            tempInput.setSelectionRange(0, tempInput.value.length);
+            try {
+                document.execCommand('copy');
+                showToast(successMsg);
+            } catch (err) {
+                showToast('Failed to copy. Please try manually.');
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        // 8. Interactive Contact Form Submission
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('sender-name').value.trim();
+            const contact = document.getElementById('sender-phone').value.trim();
+            const subject = document.getElementById('sender-subject').value.trim() || 'Portfolio Inquiry';
+            const message = document.getElementById('sender-message').value.trim();
+
+            if (!name || !contact || !message) {
+                showToast('Please fill out all required fields!');
+                return;
+            }
+
+            // Show confirmation toast and open pre-filled email client as fallback action
+            showToast(`Thank you ${name}! Your message is ready to send.`);
+            
+            const mailtoLink = `mailto:shareasobuj9829@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nContact: ${contact}\n\nMessage:\n${message}`)}`;
+            window.location.href = mailtoLink;
+            
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
